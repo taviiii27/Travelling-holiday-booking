@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travelling with Tavi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #663399;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #663399;
+      color: white;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #5a2e88;
+    }
+    input, select {
+      padding: 8px;
+      margin: 5px 0;
+      width: 100%;
+    }
+    form {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Available Holidays</h1>
+  <div id="holiday-list"></div>
+
+  <h2>Book a Holiday</h2>
+  <form id="booking-form">
+    <label>Destination ID: <input type="number" id="destinationId" required></label>
+    <label>Email: <input type="email" id="email" required></label>
+    <button type="submit">Book Now</button>
+  </form>
+
+  <h2>Registered Clients</h2>
+  <button onclick="loadClients()">Show Clients</button>
+  <ul id="client-list"></ul>
+
+  <script>
+    const API_BASE = 'http://localhost:5000';
+
+    // Load and display holidays
+    async function loadHolidays() {
+      const res = await fetch(`${API_BASE}/holiday`);
+      const holidays = await res.json();
+      const list = document.getElementById('holiday-list');
+      list.innerHTML = '';
+      holidays.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <strong>${h.destination}</strong><br>
+          Type: ${h.kind}<br>
+          Price: €${h.price}<br>
+          ID: ${h.id}
+        `;
+        list.appendChild(card);
+      });
+    }
+
+    // Booking form submit
+    document.getElementById('booking-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const destinationId = document.getElementById('destinationId').value;
+      const email = document.getElementById('email').value;
+
+      const res = await fetch(`${API_BASE}/booking`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ destinationId, email })
+      });
+
+      const msg = await res.json();
+      alert(msg.message || 'Booking done!');
+    });
+
+    // Load and show clients
+    async function loadClients() {
+      const res = await fetch(`${API_BASE}/clients`);
+      const clients = await res.json();
+      const list = document.getElementById('client-list');
+      list.innerHTML = '';
+      clients.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = `${c.name} (${c.email}) - ${c.kind}`;
+        list.appendChild(li);
+      });
+    }
+
+    // Initial load
+    loadHolidays();
+  </script>
+</body>
+</html>

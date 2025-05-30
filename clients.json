@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Sophia Müller",
+    "email": "sophia.mueller@example.com",
+    "kind": "Relax",
+    "destination": "Santorini"
+  },
+  {
+    "id": 2,
+    "name": "Liam O’Connor",
+    "email": "liam.oconnor@example.com",
+    "kind": "Adventure",
+    "destination": "Tokyo"
+  },
+  {
+    "id": 3,
+    "name": "Isabella Rossi",
+    "email": "isabella.rossi@example.com",
+    "kind": "Cultural",
+    "destination": "Paris"
+  },
+  {
+    "id": 4,
+    "name": "Mohamed El-Sayed",
+    "email": "mohamed.elsayed@example.com",
+    "kind": "Adventure",
+    "destination": "Machu Picchu"
+  },
+  {
+    "id": 5,
+    "name": "Aya Nakamura",
+    "email": "aya.nakamura@example.com",
+    "kind": "Relax",
+    "destination": "Bali"
+  }
+]
