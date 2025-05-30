@@ -62,7 +62,7 @@
   <script>
     const API_BASE = 'http://localhost:5000';
 
-    // Load and display holidays
+
     async function loadHolidays() {
       const res = await fetch(`${API_BASE}/holiday`);
       const holidays = await res.json();
@@ -80,8 +80,7 @@
         list.appendChild(card);
       });
     }
-
-    // Booking form submit
+    
     document.getElementById('booking-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const destinationId = document.getElementById('destinationId').value;
