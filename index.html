@@ -96,7 +96,6 @@
       alert(msg.message || 'Booking done!');
     });
 
-    // Load and show clients
     async function loadClients() {
       const res = await fetch(`${API_BASE}/clients`);
       const clients = await res.json();
