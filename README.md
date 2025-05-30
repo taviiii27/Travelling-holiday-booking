@@ -4,4 +4,4 @@ Users can browse and refresh a curated list of available holiday destinations, r
 
 The backend is powered by Flask, connecting to a MySQL database for efficient data management. The system also integrates email functionality to send confirmations and offers, enhancing user experience.
 
-This project demonstrates practical integration of databases, RESTful APIs, email services, and frontend/backend communication, providing a seamless travel booking experience.
+This project demonstrates practical integration of databases, RESTful APIs, email services, and frontend/backend communication(using HTML+JavaScript combination, alongside with Python and APIs) , providing a seamless travel booking experience.
