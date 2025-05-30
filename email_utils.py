@@ -6,13 +6,13 @@ def generate_email(name, destination, kind):
     return f"""
 Hi {name},
 
-🌴 We have an amazing {kind.lower()} holiday offer just for you – a trip to {destination} for under $2000!
+ We have an amazing {kind.lower()} holiday offer just for you – a trip to {destination} for under $2000!
 
-🧳 All packages include transport, accommodation, and exclusive experiences.
+All packages include transport, accommodation, and exclusive experiences.
 
 Book now and travel with ease – it's time to relax.
 
-🔗 Visit us online too
+ Visit us online too
 """
 
 def send_email(to_email, subject, name, destination, kind, sender_email, sender_password):
@@ -29,6 +29,6 @@ def send_email(to_email, subject, name, destination, kind, sender_email, sender_
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(sender_email, sender_password)
             server.sendmail(sender_email, to_email, message.as_string())
-        print(f"✅ Email sent to {to_email}")
+        print(f" Email sent to {to_email}")
     except Exception as e:
-        print(f"❌ Error sending email: {str(e)}")
+        print(f" Error sending email: {str(e)}")
